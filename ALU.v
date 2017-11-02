@@ -29,15 +29,21 @@ localparam AND = 4'b0000;
 localparam OR  = 4'b0001;
 localparam NOR = 4'b0010;
 localparam ADD = 4'b0011;
-localparam SUB = 4'b0100;
+localparam MOV = 4'b0100;
+localparam SQU = 4'b0100;
+localparam MULT= 4'b0100;
    
    always @ (A or B or ALUOperation)
      begin
 		case (ALUOperation)
 		  ADD: // add
 			ALUResult=A + B;
-		  SUB: // sub
-			ALUResult=A - B;
+			MOV:
+			ALUResult=B;
+			SQU: 
+			ALUResult=B^A;
+			MULT:
+			ALUResult=B*A;
 		  AND: // and
 			ALUResult= A & B;
 		  OR: // or
